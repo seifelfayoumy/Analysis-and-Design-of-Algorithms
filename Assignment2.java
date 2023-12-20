@@ -5,10 +5,13 @@ public class Assignment2 {
 	static String x;
 	static String y;
 	static double[][] scoreMatrix;
+    static String scoreMatrixIndex; // Additional variable for character indices in the score matrix
+
 	
     public static void main(String args[]) {
         x = "TCCCAGTTATGTCAGGGGACACGAGCATGCAGAGAC";
         y = "AATTGCCGCCGTCGTTTTCAGCAGTTATGTCAGATC";
+        scoreMatrixIndex = "AGTC-"; 
         scoreMatrix = new double[][]{
             {1, -0.8, -0.2, -2.3, -0.6},
             {-0.8, 1, -1.1, -0.7, -1.5},
@@ -25,7 +28,7 @@ public class Assignment2 {
         int m = x.length();
         int n = y.length();
         double[][] dp = new double[m+1][n+1];
-        Map<Character, Integer> charIndexMap = createCharIndexMap(x + y);
+        Map<Character, Integer> charIndexMap = createCharIndexMap(scoreMatrixIndex);
 
         // Initialize the first column and row
         for (int i = 1; i <= m; i++) {
@@ -50,15 +53,11 @@ public class Assignment2 {
         return dp[m][n];
     }
 
-    private static Map<Character, Integer> createCharIndexMap(String sequence) {
+    private static Map<Character, Integer> createCharIndexMap(String scoreMatrixIndex) {
         Map<Character, Integer> map = new HashMap<>();
-        int index = 0;
-        for (char c : sequence.toCharArray()) {
-            if (!map.containsKey(c) && c != '-') {
-                map.put(c, index++);
-            }
+        for (int i = 0; i < scoreMatrixIndex.length(); i++) {
+            map.put(scoreMatrixIndex.charAt(i), i);
         }
-        map.put('-', index);
         return map;
     }
 
