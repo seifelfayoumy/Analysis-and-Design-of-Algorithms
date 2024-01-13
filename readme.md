@@ -1,5 +1,4 @@
-# Assignment 3 Question (Given an undirected graph, explain how you can determine whether it is a tree or not. What would
-be the running time?)
+# Assignment 3 Question (Given an undirected graph, explain how you can determine whether it is a tree or not. What would be the running time?)
 
 An undirected graph is a tree if it has the following properties:
 
