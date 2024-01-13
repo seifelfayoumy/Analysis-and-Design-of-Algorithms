@@ -12,5 +12,3 @@ You can determine whether an undirected graph is a tree using **Depth-First Sear
 3. If the graph is connected, check for a cycle. If a cycle exists, it is not a tree. You can check for a cycle during the DFS or BFS by checking if an already visited vertex is encountered that is not the parent of the current vertex.
 
 The running time of this algorithm is $$O(V + E)$$, where $$V$$ is the number of vertices and $$E$$ is the number of edges. This is because each vertex and each edge will be visited once by the DFS or BFS algorithm. This makes the algorithm efficient for large graphs. 
-
-Please note that this method assumes that there are no parallel edges or self-loops in the graph. If these are allowed, additional checks would be needed. 😊
