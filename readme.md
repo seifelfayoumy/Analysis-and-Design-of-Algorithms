@@ -1,11 +1,17 @@
-# Assignment 2 Report
+# Assignment 3 Question (Given an undirected graph, explain how you can determine whether it is a tree or not. What would
+be the running time?)
 
-### Implementation Details
+An undirected graph is a tree if it has the following properties:
 
-In the provided algorithm, dynamic programming is utilized to efficiently solve the sequence alignment problem, essential in comparing genetic sequences. By constructing a matrix where each cell represents the optimal alignment score up to that point, the algorithm systematically calculates the highest-scoring alignment between two sequences. This approach leverages the overlapping subproblems inherent in sequence alignment, ensuring a thorough and optimal comparison with a time complexity of \(O(mn)\), where \(m\) and \(n\) are the lengths of the two sequences.
+1. **Connected**: There is a path between every pair of vertices. In other words, the graph is not divided into separate subgraphs.
+2. **Acyclic**: The graph does not contain any cycles.
 
-The algorithm, implemented in Java, systematically fills a 2D dynamic programming (DP) matrix, where each element represents the best alignment score between substrings of the input sequences. Key steps include initializing the first row and column based on gap penalties and iteratively computing each cell’s score by considering matches, mismatches, and gaps. The solution is generalized to handle any character set in the sequences, enhancing its applicability. The final output includes both the optimal alignment score and the aligned sequences themselves, obtained through a traceback process.
+You can determine whether an undirected graph is a tree using **Depth-First Search (DFS)** or **Breadth-First Search (BFS)**. Here's a general approach:
 
-### Time Complexity Analysis
+1. Start DFS or BFS from any vertex.
+2. If the graph is not connected, it means DFS or BFS does not visit all vertices, so it is not a tree.
+3. If the graph is connected, check for a cycle. If a cycle exists, it is not a tree. You can check for a cycle during the DFS or BFS by checking if an already visited vertex is encountered that is not the parent of the current vertex.
 
-The time complexity of this sequence alignment algorithm is \(O(mn)\), where \(m\) and \(n\) are the lengths of the two input sequences. This efficiency arises because each cell in the \(m \times n\) DP matrix is computed exactly once, with each computation involving a constant amount of work. The algorithm's design ensures that all necessary sub-solutions are computed and stored, eliminating redundant calculations. This efficiency makes it particularly suitable for aligning long genetic sequences frequently encountered in bioinformatics.
+The running time of this algorithm is $$O(V + E)$$, where $$V$$ is the number of vertices and $$E$$ is the number of edges. This is because each vertex and each edge will be visited once by the DFS or BFS algorithm. This makes the algorithm efficient for large graphs. 
+
+Please note that this method assumes that there are no parallel edges or self-loops in the graph. If these are allowed, additional checks would be needed. 😊
